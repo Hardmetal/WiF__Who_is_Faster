@@ -45,10 +45,22 @@ namespace WiF
         public string[] gameName = new string[4];
         public void fileName( )
         {
-            toolStripTextBox1.Text = File.ReadAllText("namea.cfg") ;
-            toolStripTextBox2.Text = File.ReadAllText("nameb.cfg") ;
-            toolStripTextBox3.Text = File.ReadAllText("namec.cfg") ;
-            toolStripTextBox4.Text = File.ReadAllText("named.cfg") ;
+            try
+            {
+                toolStripTextBox1.Text = File.ReadAllText("C:\\Users\\Public\\WiF\\namea.cfg");
+                toolStripTextBox2.Text = File.ReadAllText("C:\\Users\\Public\\WiF\\nameb.cfg");
+                toolStripTextBox3.Text = File.ReadAllText("C:\\Users\\Public\\WiF\\namec.cfg");
+                toolStripTextBox4.Text = File.ReadAllText("C:\\Users\\Public\\WiF\\named.cfg");
+            }
+            catch (System.IO.DirectoryNotFoundException )
+            {
+                Directory.CreateDirectory("C:\\Users\\Public\\WiF\\");
+                File.Create("C:\\Users\\Public\\WiF\\namea.cfg");
+                File.Create("C:\\Users\\Public\\WiF\\nameb.cfg");
+                File.Create("C:\\Users\\Public\\WiF\\namec.cfg");
+                File.Create("C:\\Users\\Public\\WiF\\named.cfg");
+
+            }
         }
         public void vinEcho(int i=0)
         {
@@ -164,10 +176,10 @@ namespace WiF
                 switch (i)
                 {
                     
-                    case (1): File.WriteAllText("namea.cfg", toolStripTextBox1.Text); break;
-                    case (2): File.WriteAllText("nameb.cfg", toolStripTextBox2.Text); break;
-                    case (3): File.WriteAllText("namec.cfg", toolStripTextBox3.Text); break;
-                    case (4): File.WriteAllText("named.cfg", toolStripTextBox4.Text); break;
+                    case (1): File.WriteAllText("C:\\Users\\Public\\WiF\\namea.cfg", toolStripTextBox1.Text); break;
+                    case (2): File.WriteAllText("C:\\Users\\Public\\WiF\\nameb.cfg", toolStripTextBox2.Text); break;
+                    case (3): File.WriteAllText("C:\\Users\\Public\\WiF\\namec.cfg", toolStripTextBox3.Text); break;
+                    case (4): File.WriteAllText("C:\\Users\\Public\\WiF\\named.cfg", toolStripTextBox4.Text); break;
                 }
                 }
         }
